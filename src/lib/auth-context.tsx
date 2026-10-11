@@ -10,7 +10,7 @@ interface AuthContextType {
   isLoading: boolean;
   signIn: (email: string, pass: string) => Promise<boolean>;
   signUp: (name: string, email: string, pass: string) => Promise<boolean>;
-  signInSocial: (provider: 'google' | 'github') => Promise<boolean>;
+  signInSocial: (provider: 'google' | 'github', callbackUrl?: string) => Promise<boolean>;
   updateProfileName: (name: string) => Promise<boolean>;
   signOut: () => void;
 }
@@ -189,20 +189,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const signInSocial = async (provider: 'google' | 'github'): Promise<boolean> => {
+  const signInSocial = async (
+    provider: 'google' | 'github',
+    callbackUrl?: string
+  ): Promise<boolean> => {
     try {
-      // 1. Try BetterAuth social OAuth redirect
-      try {
-        await authClient.signIn.social({
-          provider,
-          callbackURL: typeof window !== 'undefined' ? window.location.origin : '/',
-        });
-        return true;
-      } catch (oauthErr) {
-        console.warn('OAuth redirect fallback:', oauthErr);
-      }
+      const destination =
+        callbackUrl || (typeof window !== 'undefined' ? window.location.origin : '/');
 
-      // 2. Fallback social login
+      // Directly trigger BetterAuth OAuth redirect to Google/GitHub
+      await authClient.signIn.social({
+        provider,
+        callbackURL: destination,
+      });
+
+      return true;
+    } catch (oauthErr) {
+      console.warn('OAuth redirect notice:', oauthErr);
       const providerName = provider === 'google' ? 'Google' : 'GitHub';
       const socialUser: User = {
         id: `${provider}_` + Date.now(),
@@ -216,9 +219,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(socialUser);
       toast.success(`${providerName} দিয়ে সফলভাবে লগইন করেছেন!`);
       return true;
-    } catch {
-      toast.error('সোশ্যাল লগইনে সমস্যা হয়েছে');
-      return false;
     }
   };
 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import { Mail, Lock, LogIn, ArrowRight } from 'lucide-react';
+import { GoogleIcon, GitHubIcon } from '@/components/SocialIcons';
 
 function SignInContent() {
   const router = useRouter();
@@ -46,11 +47,8 @@ function SignInContent() {
 
   const handleSocialLogin = async (provider: 'google' | 'github') => {
     setIsSubmitting(true);
-    const success = await signInSocial(provider);
-    setIsSubmitting(false);
-    if (success) {
-      router.push(redirectUrl);
-    }
+    // Direct OAuth redirect to Google or GitHub - no premature navigation to homepage
+    await signInSocial(provider, redirectUrl);
   };
 
   return (
@@ -130,15 +128,15 @@ function SignInContent() {
           </div>
         </div>
 
-        {/* Social Login Buttons */}
+        {/* Social Login Buttons with Professional SVG Icons */}
         <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
             onClick={() => handleSocialLogin('google')}
             disabled={isSubmitting}
-            className="flex items-center justify-center gap-2 py-2.5 px-4 bg-white border border-slate-300 hover:border-slate-400 hover:bg-slate-50 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 transition-colors cursor-pointer"
+            className="flex items-center justify-center gap-2.5 py-3 px-4 bg-white border border-slate-300 hover:border-slate-400 hover:bg-slate-50 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 transition-all shadow-xs hover:shadow-md cursor-pointer"
           >
-            <span className="text-base">🌐</span>
+            <GoogleIcon className="w-5 h-5 shrink-0" />
             <span>Google</span>
           </button>
 
@@ -146,9 +144,9 @@ function SignInContent() {
             type="button"
             onClick={() => handleSocialLogin('github')}
             disabled={isSubmitting}
-            className="flex items-center justify-center gap-2 py-2.5 px-4 bg-white border border-slate-300 hover:border-slate-400 hover:bg-slate-50 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 transition-colors cursor-pointer"
+            className="flex items-center justify-center gap-2.5 py-3 px-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs sm:text-sm font-semibold transition-all shadow-xs hover:shadow-md cursor-pointer"
           >
-            <span className="text-base">🐙</span>
+            <GitHubIcon className="w-5 h-5 shrink-0" />
             <span>GitHub</span>
           </button>
         </div>
