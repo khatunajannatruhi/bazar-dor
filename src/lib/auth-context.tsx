@@ -25,6 +25,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    // 1. Check saved localStorage user
     try {
       const savedUser = localStorage.getItem(USER_STORAGE_KEY);
       if (savedUser) {
@@ -32,9 +33,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     } catch {
       // Ignore storage read error
-    } finally {
-      setIsLoading(false);
     }
+
+    // 2. Check BetterAuth server session (e.g. after Google OAuth redirect)
+    authClient
+      .getSession()
+      .then((sessionRes) => {
+        if (sessionRes?.data?.user) {
+          const u = sessionRes.data.user;
+          const authUser: User = {
+            id: u.id,
+            name: u.name || 'Google ব্যবহারকারী',
+            email: u.email,
+            avatar: u.image || '🌐',
+            provider: 'BetterAuth (Google)',
+          };
+          setUser(authUser);
+          localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(authUser));
+        }
+      })
+      .catch(() => {
+        // Ignore session fetch error if offline or server not ready
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   const signIn = async (email: string, pass: string): Promise<boolean> => {
@@ -168,15 +191,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signInSocial = async (provider: 'google' | 'github'): Promise<boolean> => {
     try {
-      // Try BetterAuth social flow
+      // 1. Try BetterAuth social OAuth redirect
       try {
         await authClient.signIn.social({
           provider,
+          callbackURL: typeof window !== 'undefined' ? window.location.origin : '/',
         });
-      } catch {
-        // Fallback for social login
+        return true;
+      } catch (oauthErr) {
+        console.warn('OAuth redirect fallback:', oauthErr);
       }
 
+      // 2. Fallback social login
       const providerName = provider === 'google' ? 'Google' : 'GitHub';
       const socialUser: User = {
         id: `${provider}_` + Date.now(),
