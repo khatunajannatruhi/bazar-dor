@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   icons: {
     icon: '/logo-icon.png',
   },
+  other: {
+    google: 'notranslate',
+  },
 };
 
 export default async function RootLayout({
@@ -35,8 +38,16 @@ export default async function RootLayout({
   ]);
 
   return (
-    <html lang="bn" className={`${hindSiliguri.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 font-sans">
+    <html
+      lang="bn"
+      translate="no"
+      suppressHydrationWarning
+      className={`${hindSiliguri.variable} h-full antialiased`}
+    >
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col bg-slate-50 text-slate-900 font-sans"
+      >
         <AuthProvider>
           <Toaster
             position="top-center"
@@ -48,7 +59,8 @@ export default async function RootLayout({
                 fontSize: '14px',
                 borderRadius: '12px',
                 padding: '12px 20px',
-                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                boxShadow:
+                  '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
               },
             }}
           />

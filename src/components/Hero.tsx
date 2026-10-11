@@ -61,7 +61,7 @@ export default function Hero() {
 
           {/* Right Banner Image Column */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md aspect-4/3 rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-emerald-950/40 p-2">
+            <div className="relative w-full max-w-md aspect-4/3 rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-emerald-950/40 p-2" style={{ position: 'relative' }}>
               <Image
                 src="/bazar-hero.png"
                 alt="বাজার দর হিরো ব্যানার"
