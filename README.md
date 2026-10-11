@@ -1,78 +1,117 @@
-# 🛒 বাজার দর (BazarDor) - নিত্যপ্রয়োজনীয় পণ্যের লাইভ বাজারদর প্ল্যাটফর্ম
+# 🛒 BazarDor (বাজার দর) — Daily Commodity Market Price Tracker
 
-একটি আধুনিক, রেসপন্সিভ এবং ইন্টারঅ্যাক্টিভ ওয়েব অ্যাপ্লিকেশন যা ব্যবহারকারীদের প্রতিদিনের নিত্যপ্রয়োজনীয় পণ্য—যেমন চাল, ডাল, তেল, সবজি, মাছ ও মাংসের সর্বশেষ বাজারদর, ঐতিহাসিক মূল্য পরিবর্তন এবং বিভিন্ন বাজারের তুলনামূলক চিত্র এক নজরে দেখার সুবিধা দেয়।
-
----
-
-## 🌟 প্রজেক্টের সংক্ষিপ্ত বিবরণ (Description)
-**বাজার দর (BazarDor)** বাংলাদেশের বাজারে নিত্যপ্রয়োজনীয় পণ্যের মূল্যের ওঠানামা সাধারণ ক্রেতা ও সাধারণ মানুষের কাছে স্বচ্ছ ও সহজে তুলে ধরার জন্য নির্মিত। এই প্ল্যাটফর্মের মাধ্যমে ব্যবহারকারীরা যেকোনো পণ্যের খুচরা ও পাইকারি মূল্যের তারতম্য, জাতীয় গড় দাম এবং বিগত দিনের তুলনায় মূল্যবৃদ্ধি বা মূল্যহ্রাসের সঠিক চিত্র জানতে পারেন।
+A modern, responsive, and real-time commodity price tracking web application built to empower consumers with transparent, up-to-date market information across essential daily goods—including rice, lentils, edible oils, vegetables, fish, and meat across major markets in Bangladesh.
 
 ---
 
-## 🚀 প্রধান ৫টি মূল বৈশিষ্ট্য (5 Key Features)
+## 🌟 Project Overview
 
-1. **রিয়েল-টাইম প্রাইস টিকার (Marquee Price Ticker):**
-   - ওয়েবসাইটের শীর্ষে অবিরাম স্ক্রলিং করা আধুনিক প্রাইস টিকারের মাধ্যমে গুরুত্বপূর্ণ পণ্যের তাৎক্ষণিক দাম এবং মূল্য পরিবর্তন (▲/▼%) দেখতে পাওয়া যায়।
-
-2. **দৈনিক মূল্য পরিবর্তন বিশ্লেষণ (Section A & Section B):**
-   - **আজ দাম বেড়েছে ▲:** গতকালের তুলনায় সবচেয়ে বেশি দাম বাড়া শীর্ষ ৬টি পণ্য।
-   - **আজ দাম কমেছে ▼:** গতকালের তুলনায় সবচেয়ে বেশি দাম কমা শীর্ষ ৬টি পণ্য।
-
-3. **সংখ্যাসূচক ও বাংলা ডিজিট ফিল্টারিং ও সাজানো (Challenge C1):**
-   - বাংলা সংখ্যা (০-৯) অনুযায়ী নির্ভুল গাণিতিক সর্টিং: ডিফল্ট, দাম: কম থেকে বেশি এবং দাম: বেশি থেকে কম।
-
-4. **সুরক্ষিত বিস্তারিত পেজ ও বাজারভিত্তিক বিশ্লেষণ (Protected Product Details):**
-   - লগইন ছাড়া বিস্তারিত পেজে প্রবেশে বাধা ও রিডাইরেক্ট নোটিফিকেশন।
-   - কারওয়ান বাজার, মিরপুর, নিউমার্কেটসহ দেশের বিভিন্ন বিভাগের বাজার অনুযায়ী সর্বনিম্ন ও সর্বোচ্চ মূল্যের বিশ্লেষণ এবং গড় দাম হিসাব।
-
-5. **নিরাপদ অথেনটিকেশন ও প্রোফাইল আপডেট (BetterAuth & Challenge C3):**
-   - BetterAuth ভিত্তিক ইমেইল/পাসওয়ার্ড ও সোশ্যাল (Google, GitHub) লগইন সিস্টেম।
-   - প্রোফাইল পেজে গিয়ে ইউজারের নাম আপডেট ও লাইভ স্টোরেজ সিঙ্ক করার সুবিধা।
+**BazarDor** bridges the information gap between wholesale agricultural markets and retail consumers. By aggregating real-time price fluctuations, historical trends, and market-specific rate cards, BazarDor enables consumers to make informed shopping decisions and track daily market volatility at a glance.
 
 ---
 
-## 🛠️ ব্যবহৃত প্রযুক্তিসমূহ (Technologies Used)
+## 🚀 5 Key Features
 
-- **ফ্রেমওয়ার্ক:** [Next.js](https://nextjs.org/) (App Router, Server Components & Client Components)
-- **প্রোগ্রামিং ভাষা:** [TypeScript](https://www.typescriptlang.org/) / JavaScript
-- **স্টাইলিং:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **অথেনটিকেশন:** [BetterAuth](https://better-auth.com/)
-- **আইকন ও ইউটিলিটি:** [Lucide React](https://lucide.dev/), [React Hot Toast](https://react-hot-toast.com/)
-- **ফন্ট:** Google Fonts (`Hind Siliguri`) - চমৎকার বাংলা টাইপোগ্রাফির জন্য
+1. **Live Marquee Price Ticker**
+   - An infinite-scrolling ticker bar positioned beneath the main navigation, displaying essential commodity names, units, current prices in BDT, and daily percentage movement indicators (`▲` / `▼` / `—`).
 
----
+2. **Daily Market Movers Analysis (Sections A & B)**
+   - **Top Risers (আজ দাম বেড়েছে ▲):** Automatically computes and highlights the top 6 commodities with the steepest daily price increases.
+   - **Top Fallers (আজ দাম কমেছে ▼):** Highlights the top 6 commodities with notable price drops compared to the previous day.
 
-## 📦 প্রজেক্ট রান করার নিয়ম (Getting Started)
+3. **Bengali Numeral Numerical Sorting (Challenge C1)**
+   - Custom sorting algorithm that parses localized Bengali numerals into true numeric values. Users can sort all commodities effortlessly by:
+     - `Default` (ডিফল্ট)
+     - `Price: Low to High` (দাম: কম থেকে বেশি)
+     - `Price: High to Low` (দাম: বেশি থেকে কম)
 
-১. ডিপেন্ডেন্সি ইনস্টল করুন:
-```bash
-npm install
-```
+4. **Protected Product Details & Regional Market Breakdown**
+   - Authentication-guarded detailed routes (`/product/[slug]`) offering:
+     - Comprehensive price summary: Lowest Market Price, Average Market Price, and Highest Market Price.
+     - Divisional filtering and granular rates across prominent hubs (Karwan Bazar, Mirpur 1, New Market, Khatunganj, etc.).
+     - Historical price comparisons across yesterday, last week, and last month.
 
-২. ডেভেলপমেন্ট সার্ভার চালু করুন:
-```bash
-npm run dev
-```
-
-৩. ব্রাউজারে প্রবেশ করুন:
-[http://localhost:3000](http://localhost:3000)
-
-৪. প্রোডাকশন বিল্ড তৈরি করুন:
-```bash
-npm run build
-```
+5. **Secure Authentication & Profile Update (BetterAuth & Challenge C3)**
+   - Powered by **BetterAuth** with MongoDB session persistence.
+   - Dual-mode authentication supporting traditional Email/Password credentials as well as direct OAuth via **Google** and **GitHub** (with official vector SVG icons).
+   - Dedicated profile management route (`/profile/update`) allowing authenticated users to update their profile name with live client and storage synchronization.
 
 ---
 
-## 🌐 এপিআই রেফারেন্স (API Endpoints)
-- **সকল পণ্য:** `https://openapi.programming-hero.com/api/bazardor/products`
-- **ক্যাটাগরিভিত্তিক ফিল্টার:** `https://openapi.programming-hero.com/api/bazardor/products?category={category}`
-- **একক পণ্য:** `https://openapi.programming-hero.com/api/bazardor/products/{id}`
-- **সকল ক্যাটাগরি:** `https://openapi.programming-hero.com/api/bazardor/categories`
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+| :--- | :--- |
+| **Next.js 16** | Full-stack React framework utilizing the modern App Router |
+| **TypeScript** | Type safety, maintainability, and clean code architecture |
+| **Tailwind CSS v4** | Modern utility-first styling with custom animation keyframes |
+| **BetterAuth** | Secure authentication supporting email/password and OAuth providers |
+| **MongoDB** | Cloud database adapter for persistent auth storage |
+| **Lucide React** | Clean, accessible iconography |
+| **React Hot Toast** | Non-intrusive, interactive toast notifications |
+| **Hind Siliguri** | Optimized Google font tailored for Bengali typography |
 
 ---
 
-## 📬 সাবমিশন ও লাইভ লিঙ্ক (Submission Details)
+## 📦 Getting Started
+
+### Prerequisites
+- Node.js (v18.18.0 or higher recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/khatunajannatruhi/bazar-dor.git
+   cd bazar-dor
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure Environment Variables:
+   Create a `.env.local` file in the root directory based on `.env.example`:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   BETTER_AUTH_SECRET=your_better_auth_secret
+   BETTER_AUTH_URL=http://localhost:3000
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+   GITHUB_CLIENT_ID=your_github_client_id
+   GITHUB_CLIENT_SECRET=your_github_client_secret
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+5. Build for production:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 🌐 API Reference
+
+The application interfaces with standard commodity data endpoints:
+
+- **All Products:** `https://openapi.programming-hero.com/api/bazardor/products`
+- **Filter by Category:** `https://openapi.programming-hero.com/api/bazardor/products?category={category}`
+- **Single Product Details:** `https://openapi.programming-hero.com/api/bazardor/products/{id}`
+- **Categories:** `https://openapi.programming-hero.com/api/bazardor/categories`
+
+---
+
+## 📬 Submission Details
+
 - **GitHub Repository Link:** [https://github.com/khatunajannatruhi/bazar-dor.git](https://github.com/khatunajannatruhi/bazar-dor.git)
-- **Live Link:** (ডিপ্লয়মেন্ট সম্পন্ন হওয়ার পর লাইভ লিংক এখানে যুক্ত করুন)
-
+- **Live Deployment Link:** *(Add your deployed production URL here)*
