@@ -38,7 +38,7 @@ export function getBengaliDate(): string {
   const monthName = monthsBn[now.getMonth()];
   const year = toBengaliNumber(now.getFullYear());
 
-  return `${dayName}, ${day} ${monthName} ${year}`;
+  return `${dayName}, ${day} ${monthName}, ${year}`;
 }
 
 export function cn(...classes: (string | boolean | undefined | null)[]): string {

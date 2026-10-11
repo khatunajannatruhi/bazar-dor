@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useAuth } from '@/lib/auth-context';
 import { getBengaliDate } from '@/lib/utils';
 import { Category } from '@/types';
-import { Menu, X, User as UserIcon, LogOut, Calendar, ChevronRight } from 'lucide-react';
+import { Menu, X, User as UserIcon, LogOut, ChevronRight } from 'lucide-react';
 
 interface NavbarProps {
   categories: Category[];
@@ -25,8 +25,8 @@ export default function Navbar({ categories }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
           {/* Logo + Date */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink min-w-0">
-            <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center p-1.5 sm:p-2 shadow-xs group-hover:scale-105 transition-transform shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink min-w-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-emerald-600 flex items-center justify-center p-1.5 sm:p-2 shadow-xs group-hover:scale-105 transition-transform shrink-0">
               <Image
                 src="/logo-icon.png"
                 alt="বাজার দর লোগো"
@@ -41,16 +41,11 @@ export default function Navbar({ categories }: NavbarProps) {
                 🛒
               </span>
             </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight group-hover:text-emerald-700 transition-colors truncate">
-                  বাজার দর
-                </span>
-                <span className="text-[10px] sm:text-xs bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded-full shrink-0">
-                  লাইভ
-                </span>
-              </div>
-              <p className="text-[11px] sm:text-xs text-slate-500 font-medium truncate hidden xs:block">
+            <div className="min-w-0 flex flex-col justify-center">
+              <span className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight group-hover:text-emerald-700 transition-colors leading-tight">
+                বাজার দর
+              </span>
+              <p className="text-[11px] sm:text-xs text-slate-600 font-medium whitespace-nowrap mt-0.5 leading-tight">
                 {bengaliDate}
               </p>
             </div>
@@ -105,10 +100,10 @@ export default function Navbar({ categories }: NavbarProps) {
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 sm:p-2 text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg cursor-pointer transition-colors"
+              className="p-1.5 sm:p-2 text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg cursor-pointer transition-colors sm:hidden"
               aria-label="মেনু খুলুন"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -153,11 +148,6 @@ export default function Navbar({ categories }: NavbarProps) {
       {/* Mobile Drawer Navigation Links (Overlay Dropdown) */}
       {mobileMenuOpen && (
         <div className="bg-white border-t border-slate-200 px-4 py-5 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto animate-in slide-in-from-top-2">
-          {/* Bengali Date in Drawer */}
-          <div className="flex items-center gap-2 p-3 bg-emerald-50/70 border border-emerald-100 rounded-xl text-xs sm:text-sm text-emerald-800 font-semibold">
-            <Calendar className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>আজকের তারিখ: {bengaliDate}</span>
-          </div>
 
           {/* User Auth Section inside Drawer */}
           {user ? (
