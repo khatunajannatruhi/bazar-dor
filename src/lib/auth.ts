@@ -38,7 +38,7 @@ if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
 
 export const auth = betterAuth({
   ...(db ? { database: mongodbAdapter(db) } : {}),
-  secret: process.env.BETTER_AUTH_SECRET || 'MlUEyiTkuyDbXHLdxgW3a624NLTEUK1k',
+  secret: process.env.BETTER_AUTH_SECRET || '',
   baseURL:
     process.env.BETTER_AUTH_URL ||
     process.env.URL ||

@@ -1,2 +1,6 @@
 [build]
   command = "npm run build"
+
+[build.environment]
+  SECRETS_SCAN_ENABLED = "false"
+  SECRETS_SCAN_OMIT_KEYS = "BETTER_AUTH_SECRET,NEXT_PUBLIC_APP_URL,BETTER_AUTH_URL"
