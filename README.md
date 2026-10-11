@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 বাজার দর (BazarDor) - নিত্যপ্রয়োজনীয় পণ্যের লাইভ বাজারদর প্ল্যাটফর্ম
 
-## Getting Started
+একটি আধুনিক, রেসপন্সিভ এবং ইন্টারঅ্যাক্টিভ ওয়েব অ্যাপ্লিকেশন যা ব্যবহারকারীদের প্রতিদিনের নিত্যপ্রয়োজনীয় পণ্য—যেমন চাল, ডাল, তেল, সবজি, মাছ ও মাংসের সর্বশেষ বাজারদর, ঐতিহাসিক মূল্য পরিবর্তন এবং বিভিন্ন বাজারের তুলনামূলক চিত্র এক নজরে দেখার সুবিধা দেয়।
 
-First, run the development server:
+---
 
+## 🌟 প্রজেক্টের সংক্ষিপ্ত বিবরণ (Description)
+**বাজার দর (BazarDor)** বাংলাদেশের বাজারে নিত্যপ্রয়োজনীয় পণ্যের মূল্যের ওঠানামা সাধারণ ক্রেতা ও সাধারণ মানুষের কাছে স্বচ্ছ ও সহজে তুলে ধরার জন্য নির্মিত। এই প্ল্যাটফর্মের মাধ্যমে ব্যবহারকারীরা যেকোনো পণ্যের খুচরা ও পাইকারি মূল্যের তারতম্য, জাতীয় গড় দাম এবং বিগত দিনের তুলনায় মূল্যবৃদ্ধি বা মূল্যহ্রাসের সঠিক চিত্র জানতে পারেন।
+
+---
+
+## 🚀 প্রধান ৫টি মূল বৈশিষ্ট্য (5 Key Features)
+
+1. **রিয়েল-টাইম প্রাইস টিকার (Marquee Price Ticker):**
+   - ওয়েবসাইটের শীর্ষে অবিরাম স্ক্রলিং করা আধুনিক প্রাইস টিকারের মাধ্যমে গুরুত্বপূর্ণ পণ্যের তাৎক্ষণিক দাম এবং মূল্য পরিবর্তন (▲/▼%) দেখতে পাওয়া যায়।
+
+2. **দৈনিক মূল্য পরিবর্তন বিশ্লেষণ (Section A & Section B):**
+   - **আজ দাম বেড়েছে ▲:** গতকালের তুলনায় সবচেয়ে বেশি দাম বাড়া শীর্ষ ৬টি পণ্য।
+   - **আজ দাম কমেছে ▼:** গতকালের তুলনায় সবচেয়ে বেশি দাম কমা শীর্ষ ৬টি পণ্য।
+
+3. **সংখ্যাসূচক ও বাংলা ডিজিট ফিল্টারিং ও সাজানো (Challenge C1):**
+   - বাংলা সংখ্যা (০-৯) অনুযায়ী নির্ভুল গাণিতিক সর্টিং: ডিফল্ট, দাম: কম থেকে বেশি এবং দাম: বেশি থেকে কম।
+
+4. **সুরক্ষিত বিস্তারিত পেজ ও বাজারভিত্তিক বিশ্লেষণ (Protected Product Details):**
+   - লগইন ছাড়া বিস্তারিত পেজে প্রবেশে বাধা ও রিডাইরেক্ট নোটিফিকেশন।
+   - কারওয়ান বাজার, মিরপুর, নিউমার্কেটসহ দেশের বিভিন্ন বিভাগের বাজার অনুযায়ী সর্বনিম্ন ও সর্বোচ্চ মূল্যের বিশ্লেষণ এবং গড় দাম হিসাব।
+
+5. **নিরাপদ অথেনটিকেশন ও প্রোফাইল আপডেট (BetterAuth & Challenge C3):**
+   - BetterAuth ভিত্তিক ইমেইল/পাসওয়ার্ড ও সোশ্যাল (Google, GitHub) লগইন সিস্টেম।
+   - প্রোফাইল পেজে গিয়ে ইউজারের নাম আপডেট ও লাইভ স্টোরেজ সিঙ্ক করার সুবিধা।
+
+---
+
+## 🛠️ ব্যবহৃত প্রযুক্তিসমূহ (Technologies Used)
+
+- **ফ্রেমওয়ার্ক:** [Next.js](https://nextjs.org/) (App Router, Server Components & Client Components)
+- **প্রোগ্রামিং ভাষা:** [TypeScript](https://www.typescriptlang.org/) / JavaScript
+- **স্টাইলিং:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **অথেনটিকেশন:** [BetterAuth](https://better-auth.com/)
+- **আইকন ও ইউটিলিটি:** [Lucide React](https://lucide.dev/), [React Hot Toast](https://react-hot-toast.com/)
+- **ফন্ট:** Google Fonts (`Hind Siliguri`) - চমৎকার বাংলা টাইপোগ্রাফির জন্য
+
+---
+
+## 📦 প্রজেক্ট রান করার নিয়ম (Getting Started)
+
+১. ডিপেন্ডেন্সি ইনস্টল করুন:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+২. ডেভেলপমেন্ট সার্ভার চালু করুন:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+৩. ব্রাউজারে প্রবেশ করুন:
+[http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+৪. প্রোডাকশন বিল্ড তৈরি করুন:
+```bash
+npm run build
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌐 এপিআই রেফারেন্স (API Endpoints)
+- **সকল পণ্য:** `https://openapi.programming-hero.com/api/bazardor/products`
+- **ক্যাটাগরিভিত্তিক ফিল্টার:** `https://openapi.programming-hero.com/api/bazardor/products?category={category}`
+- **একক পণ্য:** `https://openapi.programming-hero.com/api/bazardor/products/{id}`
+- **সকল ক্যাটাগরি:** `https://openapi.programming-hero.com/api/bazardor/categories`
