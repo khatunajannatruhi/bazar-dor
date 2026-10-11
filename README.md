@@ -69,3 +69,10 @@ npm run build
 - **ক্যাটাগরিভিত্তিক ফিল্টার:** `https://openapi.programming-hero.com/api/bazardor/products?category={category}`
 - **একক পণ্য:** `https://openapi.programming-hero.com/api/bazardor/products/{id}`
 - **সকল ক্যাটাগরি:** `https://openapi.programming-hero.com/api/bazardor/categories`
+
+---
+
+## 📬 সাবমিশন ও লাইভ লিঙ্ক (Submission Details)
+- **GitHub Repository Link:** [https://github.com/khatunajannatruhi/bazar-dor.git](https://github.com/khatunajannatruhi/bazar-dor.git)
+- **Live Link:** (ডিপ্লয়মেন্ট সম্পন্ন হওয়ার পর লাইভ লিংক এখানে যুক্ত করুন)
+
