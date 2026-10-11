@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import { User, Mail, Shield, Edit3, LogOut, ArrowLeft } from 'lucide-react';
+import { GoogleIcon, GitHubIcon } from '@/components/SocialIcons';
 import toast from 'react-hot-toast';
 
 export default function ProfilePage() {
@@ -27,6 +28,13 @@ export default function ProfilePage() {
       </div>
     );
   }
+
+  const loginProvider = (() => {
+    const p = (user.provider || '').toLowerCase();
+    if (p.includes('google')) return 'Google';
+    if (p.includes('github')) return 'GitHub';
+    return 'Email';
+  })();
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -72,9 +80,11 @@ export default function ProfilePage() {
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">
                   লগইন মাধ্যম
                 </span>
-                <span className="text-sm font-bold text-slate-800 capitalize flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-emerald-600" />
-                  <span>{user.provider || 'BetterAuth Credentials'}</span>
+                <span className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                  {loginProvider === 'Google' && <GoogleIcon className="w-4 h-4 shrink-0" />}
+                  {loginProvider === 'GitHub' && <GitHubIcon className="w-4 h-4 shrink-0 text-slate-900" />}
+                  {loginProvider === 'Email' && <Mail className="w-4 h-4 text-emerald-600 shrink-0" />}
+                  <span>{loginProvider}</span>
                 </span>
               </div>
 

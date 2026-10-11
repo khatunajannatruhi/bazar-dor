@@ -19,6 +19,15 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const USER_STORAGE_KEY = 'bazardor_auth_user';
 const USERS_DB_KEY = 'bazardor_registered_users';
+const LAST_PROVIDER_KEY = 'bazardor_auth_last_provider';
+
+export function normalizeProvider(provider?: string): 'Google' | 'GitHub' | 'Email' {
+  if (!provider) return 'Email';
+  const p = provider.toLowerCase();
+  if (p.includes('google')) return 'Google';
+  if (p.includes('github')) return 'GitHub';
+  return 'Email';
+}
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -27,26 +36,44 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // 1. Check saved localStorage user
     try {
-      const savedUser = localStorage.getItem(USER_STORAGE_KEY);
-      if (savedUser) {
-        setUser(JSON.parse(savedUser));
+      const savedUserRaw = localStorage.getItem(USER_STORAGE_KEY);
+      if (savedUserRaw) {
+        const parsed = JSON.parse(savedUserRaw);
+        if (parsed) {
+          parsed.provider = normalizeProvider(parsed.provider);
+          setUser(parsed);
+          localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(parsed));
+        }
       }
     } catch {
       // Ignore storage read error
     }
 
-    // 2. Check BetterAuth server session (e.g. after Google OAuth redirect)
+    // 2. Check BetterAuth server session (e.g. after Google or GitHub OAuth redirect)
     authClient
       .getSession()
       .then((sessionRes) => {
         if (sessionRes?.data?.user) {
           const u = sessionRes.data.user;
+          const lastUsed = localStorage.getItem(LAST_PROVIDER_KEY);
+          let detectedProvider: 'Google' | 'GitHub' | 'Email' = 'Google';
+
+          if (lastUsed === 'GitHub' || (u.image && u.image.includes('github'))) {
+            detectedProvider = 'GitHub';
+          } else if (lastUsed === 'Google' || (u.image && u.image.includes('google'))) {
+            detectedProvider = 'Google';
+          } else if (lastUsed === 'Email') {
+            detectedProvider = 'Email';
+          } else if (lastUsed) {
+            detectedProvider = normalizeProvider(lastUsed);
+          }
+
           const authUser: User = {
             id: u.id,
-            name: u.name || 'Google ব্যবহারকারী',
+            name: u.name || (detectedProvider === 'GitHub' ? 'GitHub ব্যবহারকারী' : 'Google ব্যবহারকারী'),
             email: u.email,
-            avatar: u.image || '🌐',
-            provider: 'BetterAuth (Google)',
+            avatar: u.image || (detectedProvider === 'Google' ? '🌐' : detectedProvider === 'GitHub' ? '🐙' : '👤'),
+            provider: detectedProvider,
           };
           setUser(authUser);
           localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(authUser));
@@ -66,6 +93,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return false;
     }
 
+    localStorage.setItem(LAST_PROVIDER_KEY, 'Email');
+
     try {
       // 1. Try BetterAuth client API
       try {
@@ -80,7 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             name: response.data.user.name || email.split('@')[0],
             email: response.data.user.email,
             avatar: response.data.user.image || '👤',
-            provider: 'BetterAuth',
+            provider: 'Email',
           };
           localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(authUser));
           setUser(authUser);
@@ -106,7 +135,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           name: foundUser.name,
           email: foundUser.email,
           avatar: foundUser.avatar || '👤',
-          provider: 'BetterAuth',
+          provider: 'Email',
         };
       } else {
         loggedInUser = {
@@ -114,7 +143,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           name: email.split('@')[0],
           email,
           avatar: '👤',
-          provider: 'BetterAuth',
+          provider: 'Email',
         };
       }
 
@@ -138,6 +167,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       toast.error('পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে');
       return false;
     }
+
+    localStorage.setItem(LAST_PROVIDER_KEY, 'Email');
 
     try {
       // 1. Try BetterAuth client API
@@ -175,7 +206,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         email,
         pass,
         avatar: '👤',
-        provider: 'BetterAuth',
+        provider: 'Email',
       };
 
       registeredUsers.push(newUser);
@@ -193,6 +224,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     provider: 'google' | 'github',
     callbackUrl?: string
   ): Promise<boolean> => {
+    const providerName: 'Google' | 'GitHub' = provider === 'google' ? 'Google' : 'GitHub';
+    localStorage.setItem(LAST_PROVIDER_KEY, providerName);
+
     try {
       const destination =
         callbackUrl || (typeof window !== 'undefined' ? window.location.origin : '/');
@@ -206,13 +240,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return true;
     } catch (oauthErr) {
       console.warn('OAuth redirect notice:', oauthErr);
-      const providerName = provider === 'google' ? 'Google' : 'GitHub';
       const socialUser: User = {
         id: `${provider}_` + Date.now(),
         name: `${providerName} ব্যবহারকারী`,
         email: `user@${provider}.com`,
         avatar: provider === 'google' ? '🌐' : '🐙',
-        provider: `BetterAuth (${providerName})`,
+        provider: providerName,
       };
 
       localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(socialUser));
@@ -273,6 +306,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // Ignore server signout error
       }
       localStorage.removeItem(USER_STORAGE_KEY);
+      localStorage.removeItem(LAST_PROVIDER_KEY);
       setUser(null);
       toast.success('সফলভাবে লগআউট হয়েছে');
     } catch {
