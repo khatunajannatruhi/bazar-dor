@@ -3,7 +3,7 @@ import React from 'react';
 export default function Footer() {
   return (
     <footer suppressHydrationWarning className="bg-slate-900 text-slate-300 border-t border-slate-800 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           {/* Left Text */}
           <div className="flex items-center gap-2">

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Hind_Siliguri } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
@@ -14,6 +14,12 @@ const hindSiliguri = Hind_Siliguri({
   variable: '--font-hind',
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: 'বাজার দর — নিত্যপ্রয়োজনীয় পণ্যের প্রতিদিনের বাজারদর',

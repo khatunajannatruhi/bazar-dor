@@ -16,8 +16,8 @@ export default function Ticker({ products }: TickerProps) {
   const tickerItems = [...products, ...products];
 
   return (
-    <div className="bg-emerald-950 text-emerald-100 border-y border-emerald-800/60 overflow-hidden py-2 text-xs sm:text-sm select-none">
-      <div className="animate-ticker items-center gap-6 whitespace-nowrap">
+    <div className="w-full max-w-full bg-emerald-950 text-emerald-100 border-y border-emerald-800/60 overflow-hidden py-1.5 sm:py-2 text-[11px] sm:text-sm select-none">
+      <div className="animate-ticker items-center gap-4 sm:gap-6 whitespace-nowrap">
         {tickerItems.map((p, idx) => {
           const isUp = p.change?.dir === 'up';
           const isDown = p.change?.dir === 'down';

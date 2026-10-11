@@ -46,15 +46,15 @@ export default function SortDropdown({ currentSort, onSortChange }: SortDropdown
   }, []);
 
   return (
-    <div className="relative inline-block text-left" ref={dropdownRef}>
-      <div className="flex items-center gap-2">
+    <div className="relative inline-block text-left w-full sm:w-auto" ref={dropdownRef}>
+      <div className="flex items-center gap-2 w-full sm:w-auto">
         <span className="text-sm font-semibold text-slate-600 hidden sm:inline">
           সাজান:
         </span>
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex items-center justify-between gap-2 px-3.5 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 hover:border-slate-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-xs cursor-pointer min-w-[160px]"
+          className="w-full sm:w-auto inline-flex items-center justify-between gap-2 px-3.5 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 hover:border-slate-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-xs cursor-pointer min-w-[160px]"
         >
           <div className="flex items-center gap-2">
             <ArrowDownUp className="w-4 h-4 text-emerald-600" />

@@ -130,12 +130,12 @@ export default function ProductDetailClient({ product, slug }: ProductDetailClie
   const pct = Math.abs(product.change?.pct || 0);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-6 sm:space-y-10">
       {/* Back button */}
       <div>
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-emerald-700 transition-colors"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-500 hover:text-emerald-700 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>সব পণ্যের তালিকায় ফিরুন</span>
@@ -143,28 +143,28 @@ export default function ProductDetailClient({ product, slug }: ProductDetailClie
       </div>
 
       {/* Top — Summary */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-xs">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-slate-100">
-          <div className="flex items-center gap-5">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-5xl sm:text-6xl shadow-inner shrink-0">
+      <div className="bg-white rounded-3xl border border-slate-200 p-4 sm:p-8 lg:p-10 shadow-xs">
+        <div className="flex flex-col md:flex-row items-center sm:items-start md:items-center justify-between gap-5 sm:gap-6 pb-6 sm:pb-8 border-b border-slate-100">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5 w-full md:w-auto">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-3xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-4xl sm:text-5xl md:text-6xl shadow-inner shrink-0">
               {product.image || '🛒'}
             </div>
-            <div>
-              <div className="flex flex-wrap items-center gap-2 mb-2">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 mb-2">
                 <Link
                   href={`/category/${product.category}`}
-                  className="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 hover:bg-emerald-200 transition-colors"
+                  className="inline-flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 hover:bg-emerald-200 transition-colors"
                 >
                   <span>{product.categoryIcon}</span>
                   <span>{product.categoryNameBn}</span>
                 </Link>
 
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700">
+                <span className="text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full bg-slate-100 text-slate-700">
                   {formatUnit(product.unit)}
                 </span>
 
                 <span
-                  className={`inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full ${
+                  className={`inline-flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full ${
                     isUp
                       ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                       : isDown
@@ -177,22 +177,22 @@ export default function ProductDetailClient({ product, slug }: ProductDetailClie
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
                 {product.nameBn}
               </h1>
 
               {/* Subtitle / Market summary line */}
-              <p className="text-slate-500 text-sm sm:text-base font-medium mt-1">
+              <p className="text-slate-500 text-xs sm:text-sm md:text-base font-medium mt-1">
                 আজকের জাতীয় গড় বাজারদর অনুযায়ী প্রতি {formatUnit(product.unit).replace('প্রতি ', '')} এর মূল্য {formatPrice(product.today)}।
               </p>
             </div>
           </div>
 
-          <div className="w-full md:w-auto p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center md:text-right">
-            <span className="text-xs font-medium text-slate-500 block mb-0.5">
+          <div className="w-full md:w-auto p-3.5 sm:p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center md:text-right shrink-0">
+            <span className="text-[11px] sm:text-xs font-medium text-slate-500 block mb-0.5">
               আজকের জাতীয় গড় মূল্য
             </span>
-            <span className="text-3xl font-black text-emerald-700">
+            <span className="text-2xl sm:text-3xl font-black text-emerald-700">
               {formatPrice(product.today)}
             </span>
           </div>

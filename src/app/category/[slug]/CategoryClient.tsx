@@ -52,12 +52,12 @@ export default function CategoryClient({
   const sortedProducts = sortProducts(products, sortOption);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10">
       {/* Breadcrumb / Back button */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-emerald-600 transition-colors"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-500 hover:text-emerald-600 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>হোম পেজ</span>
@@ -65,34 +65,34 @@ export default function CategoryClient({
       </div>
 
       {/* Header with Title + Icon and Sort control */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-3xl shadow-xs shrink-0">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 md:p-8 shadow-xs mb-6 sm:mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-2xl sm:text-3xl shadow-xs shrink-0">
             {category.icon}
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
+              <span className="text-[10px] sm:text-xs font-bold text-emerald-700 bg-emerald-100 px-2 sm:px-2.5 py-0.5 rounded-full">
                 ক্যাটাগরি
               </span>
-              <span className="text-xs text-slate-500">
+              <span className="text-[11px] sm:text-xs text-slate-500">
                 মোট {products.length}টি পণ্য
               </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-1">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight mt-1">
               {category.nameBn}
             </h1>
           </div>
         </div>
 
         {/* Sort control - C1 */}
-        <div className="shrink-0">
+        <div className="w-full md:w-auto shrink-0">
           <SortDropdown currentSort={sortOption} onSortChange={setSortOption} />
         </div>
       </div>
 
       {/* Product Cards List */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
         {sortedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

@@ -50,19 +50,19 @@ export default function UpdateProfilePage() {
   }
 
   return (
-    <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-md mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12">
       {/* Back to Profile */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <Link
           href="/profile"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-emerald-700 transition-colors"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-500 hover:text-emerald-700 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>প্রোফাইলে ফিরে যান</span>
         </Link>
       </div>
 
-      <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-xl space-y-6">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-5 sm:p-8 md:p-10 shadow-xl space-y-6">
         <div className="text-center">
           <div className="w-16 h-16 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 border border-emerald-200">
             ✍️

@@ -4,8 +4,8 @@ import { Home } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="flex-1 flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 text-center shadow-xl">
+    <div className="flex-1 flex items-center justify-center py-10 sm:py-20 px-3 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full bg-white rounded-3xl border border-slate-200 p-6 sm:p-12 text-center shadow-xl">
         <div className="w-24 h-24 bg-emerald-50 text-emerald-600 rounded-3xl flex items-center justify-center text-5xl mx-auto mb-6 border border-emerald-100 shadow-inner">
           🛒
         </div>
